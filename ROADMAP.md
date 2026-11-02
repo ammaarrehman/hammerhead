@@ -1,6 +1,6 @@
 # Hammerhead Roadmap
 
-This roadmap outlines the development trajectory for Hammerhead. Phases are ordered by architectural dependency and immediate user utility.
+Released: [v0.1.0](https://github.com/ammaarrehman/hammerhead/releases/tag/v0.1.0). The completed v0.1 section records its native checks. All unchecked items below are planned and are not included in that release.
 
 ---
 
@@ -20,12 +20,12 @@ The focus of V0.1 was establishing a secure, fast, and reliable single-binary CL
 - [x] Foundational test harness with adversarial fixtures and race detection
 
 ### Milestone 2: Native Repository Hygiene & Hardening
-- [x] **Large File Detection (`FILE-002`)**: Detect committed binaries or oversized blobs exceeding configurable limits (`--max-file-size`).
+- [x] **Large File Detection (`FILE-002`)**: Report working-tree files exceeding the configurable size threshold (`--max-file-size`). This does not inspect Git history or establish that a file was committed.
 - [x] **Gitignore Hygiene Check (`GIT-001`)**: Verify common sensitive patterns (`.env`, `*.key`, `id_rsa`) are properly excluded without penalizing benign public certificates (`*.pem`).
 - [x] **Repository Health Check (`GIT-002`)**: Inspect repository status, detached HEAD, and uncommitted modification states.
 - [x] **Documentation & Governance Check (`PROJ-001`)**: Detect presence of `README.md` and `LICENSE`.
 - [x] **Project / Runtime Detection (`PROJ-002`)**: Identify language runtimes, package managers, and manifest files (`go.mod`, `package.json`, `Cargo.toml`, etc.).
-- [x] **Secret Signatures & Credential Pairs (`SEC-001`)**: Narrow regex checks for PEM private keys and AWS credentials, properly distinguishing Access Key IDs (Medium) from confirmed Access Key + Secret Key pairs (Critical).
+- [x] **Secret Signatures & Credential Pairs (`SEC-001`)**: Narrow regex checks for PEM private keys and AWS credentials, properly distinguishing Access Key IDs (Medium) from co-occurring Access Key ID and Secret Access Key assignments (Critical). Pattern matches do not validate active credentials or prove that the keys belong together.
 - [x] **Finding Classification Architecture**: Strict separation of `ClassSecurity`, `ClassHygiene`, and `ClassInfo`. Repositories with zero security issues report `Security risk: NONE`.
 - [x] **Terminal Injection Sanitization**: Strip ANSI escape sequences, carriage returns, embedded newlines, and control characters from untrusted repository paths and evidence strings.
 - [x] **Path Exclusions (`--exclude` / `-e`)**: Repeatable traversal exclusion patterns evaluated before reading child directories.
