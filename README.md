@@ -26,10 +26,12 @@
 - Audit the current working tree locally, without executing its build scripts or package managers.
 - Identify sensitive filenames and supported credential patterns, alongside repository hygiene issues.
 - Keep Security, Hygiene, and Info findings separate; only Security findings affect the failure threshold.
-- Use readable terminal reports or structured JSON in scripts and automation.
+- Use readable t- Use readable terminal reports or structured JSON in scripts and automation.
 
-## Installation
-
+The [architecture notes](ARCHITECTURE.md) explain the check registry, guarded
+filesystem reads, finding classes, and reporter interfaces. External scanners,
+Git-history scanning, and SARIF output remain [roadmap work](ROADMAP.md), not
+v0.1.0 capabilities.
 Download the archive for your platform from the [v0.1.0 release](https://github.com/ammaarrehman/hammerhead/releases/tag/v0.1.0):
 
 | Platform | Archive |
